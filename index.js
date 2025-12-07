@@ -25,12 +25,25 @@ function startBot() {
   bot.on('spawn', () => {
     console.log('Bot connected to server!');
 
-    // Anti-AFK: small movements
+    // Anti-AFK & random movements
     if (cfg.utils["anti-afk"].enabled) {
       setInterval(() => {
-        bot.setControlState('forward', true);
-        setTimeout(() => bot.setControlState('forward', false), 500);
-      }, 30000);
+        // Random movement
+        bot.setControlState('forward', Math.random() > 0.5);
+        bot.setControlState('back', Math.random() > 0.8);
+        bot.setControlState('jump', Math.random() > 0.7);
+        bot.setControlState('sneak', Math.random() > 0.6);
+
+        // Random small look
+        bot.look(bot.entity.yaw + (Math.random() - 0.5), bot.entity.pitch + (Math.random() - 0.5), true);
+      }, 10000); // every 10 seconds
+    }
+
+    // Heartbeat to prevent idle shutdown
+    if (cfg.utils.heartbeat.enabled) {
+      setInterval(() => {
+        bot.chat(''); // sends an empty chat packet, counted as activity
+      }, cfg.utils.heartbeat.interval);
     }
 
     // Repeating chat messages
