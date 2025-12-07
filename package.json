@@ -1,0 +1,15 @@
+{
+  "name": "skyforge-bot",
+  "version": "1.0.0",
+  "description": "Skyforge SMP bot to keep Aternos server online",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "mineflayer": "^4.4.1",
+    "express": "^4.18.2"
+  },
+  "author": "Crystalia",
+  "license": "MIT"
+}
