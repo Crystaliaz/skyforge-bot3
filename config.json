@@ -18,6 +18,10 @@
       "messages": ["This message will be sent every 30 minutes"]
     },
     "auto-reconnect": true,
-    "auto-reconnect-delay": 5000
+    "auto-reconnect-delay": 5000,
+    "heartbeat": {
+      "enabled": true,
+      "interval": 10000
+    }
   }
 }
